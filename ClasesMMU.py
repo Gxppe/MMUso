@@ -9,11 +9,9 @@ class page:
     def modifybit(self,task):
         if task== "R": 
             self.bit[1]=1
-        
         elif task== "W":
             self.bit[1]=1
             self.bit[2]=1
-
         elif task== "F":
             self.bit[0]=0
 
@@ -44,4 +42,3 @@ def llenarcola(cola,rango):
     while i<rango:	
         cola.enq(i)
 
-print('test')
