@@ -1,12 +1,12 @@
 class page:
-    def __init__(self,page,frame=None):
+    def __init__(self,page,frame=-1):
 
 #bit[0]: V
 #bit[1]: U
 #bit[2]: D
 
         self.page= page     
-        self.bit= [1,0,0]
+        self.bit= [0,0,0]
         self.frame= frame
 
     def modifyframe(self,frame):
@@ -20,7 +20,7 @@ class page:
             self.bit[2]=1
         elif task== "F":
             self.bit[0]=0 
-            self.modifyframe(None)
+            self.modifyframe(-1)
 
     def loadpage(self,frame):
         self.frame= frame
@@ -34,21 +34,28 @@ class page:
     
     def getbit(self):
         return self.bit
+    
     def getpage(self):
         return self.page
+    
     
 class Cola:
     def __init__(self):
         self.q=[]
+
     def enq(self,x):
         self.q.insert(0,x)
+
     def deq(self):
-        assert len(self.q)>0
+        assert len(self)>0
         return self.q.pop()
+    
     def is_empty(self):
-        return len(self.q)==0
+        return len(self)==0
+    
     def size(self):
-        return len(self.q)
+        return len(self)
+    
     def getq(self):
         return self.q
 
@@ -64,3 +71,15 @@ def initpages(rango):
     for i in range(rango):
         pages.append(page(i))
     return pages
+
+def verificarcarga(lista_paginas,pagina):
+    if lista_paginas[pagina].getbit()[0]==1:
+        return True
+    return False
+
+def cargarpagina(lista_paginas,pagina,colaframes,colapaginas):
+    if colaframes.size()==0:
+        frame=colapaginas.deq().getframe()
+        lista_paginas[pagina].loadpage(frame)
+        
+    
