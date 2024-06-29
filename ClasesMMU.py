@@ -82,10 +82,9 @@ def verificarcarga(lista_paginas,pagina):
 
 def cargarpagina(lista_paginas,pagina,colaframes,colapaginas):
     if colaframes.size()==0:
-        paginavictima=colapaginas.deq
-        frame=paginavictima.getframe()
-        
-        lista_paginas[pagina].loadpage(frame)
+        paginavictima=colapaginas.deq()
+        lista_paginas[pagina].loadpage(paginavictima.getframe())
+        lista_paginas[paginavictima.getpage()].modifybit("F")
         colapaginas.enq(lista_paginas[pagina])
     else:
         frame=colaframes.deq()

@@ -25,7 +25,7 @@ def mmu(paginas,frames,archivo):
                 contador+=1
             print()
             for i in range(paginas):
-                print("Pagina: ",lista_paginas[i].getpage()," Frame: ",lista_paginas[i].getframe()," Bit: ",lista_paginas[i].getbit())
+                print("Pagina: ",lista_paginas[i].getpage()," Bit: ",lista_paginas[i].getbit()," Frame: ",lista_paginas[i].getframe())
             print("final",cola)
 
-mmu(5,3,"ejemplo")
+mmu(6,3,"ejemplo")
