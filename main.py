@@ -28,4 +28,3 @@ def mmu(paginas,frames,archivo):
                 print("Pagina: ",lista_paginas[i].getpage()," Bit: ",lista_paginas[i].getbit()," Frame: ",lista_paginas[i].getframe())
             print("final",cola)
 
-mmu(6,3,"ejemplo")
