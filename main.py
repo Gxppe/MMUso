@@ -6,15 +6,26 @@ def mmu(paginas,frames,archivo):
     ordenpaginas=Cola()
     for i in range(paginas):
         lista_paginas.append(page(i))
-
-
     with open(archivo) as f:
+        contador=0
         for line in f:
+
             operacion= line[0]
             pagina= int(line[1])
+            print("Operacion:",line)
+            print("inicio",cola)
+            
+            if verificarcarga(lista_paginas,pagina):
+                lista_paginas[pagina].modifybit(operacion)
+                print("entre if",contador)
+            else:
+                cargarpagina(lista_paginas,pagina,cola,ordenpaginas)
+                lista_paginas[pagina].modifybit(operacion)
+                print("entre else",contador)
+                contador+=1
+            print()
+            for i in range(paginas):
+                print("Pagina: ",lista_paginas[i].getpage()," Frame: ",lista_paginas[i].getframe()," Bit: ",lista_paginas[i].getbit())
+            print("final",cola)
 
-            if operacion== "R":
-                if verificarcarga(lista_paginas,pagina):
-                    lista_paginas[pagina].modifybit(operacion)
-                else:
-
+mmu(5,3,"ejemplo")

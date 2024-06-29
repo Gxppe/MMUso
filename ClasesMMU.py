@@ -47,17 +47,20 @@ class Cola:
         self.q.insert(0,x)
 
     def deq(self):
-        assert len(self)>0
+        assert len(self.q)>0
         return self.q.pop()
     
     def is_empty(self):
         return len(self)==0
     
     def size(self):
-        return len(self)
+        return len(self.q)
     
     def getq(self):
         return self.q
+    
+    def __str__(self):
+        return f"Cola: {self.q}"
 
 
 def initq(rango):
@@ -79,7 +82,12 @@ def verificarcarga(lista_paginas,pagina):
 
 def cargarpagina(lista_paginas,pagina,colaframes,colapaginas):
     if colaframes.size()==0:
-        frame=colapaginas.deq().getframe()
-        lista_paginas[pagina].loadpage(frame)
+        paginavictima=colapaginas.deq
+        frame=paginavictima.getframe()
         
-    
+        lista_paginas[pagina].loadpage(frame)
+        colapaginas.enq(lista_paginas[pagina])
+    else:
+        frame=colaframes.deq()
+        lista_paginas[pagina].loadpage(frame)
+        colapaginas.enq(lista_paginas[pagina])
