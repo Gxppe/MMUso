@@ -20,8 +20,12 @@ class page:
             self.bit[2]=1
         elif task== "F":
             self.bit[0]=0 
+            frame= self.frame
             self.modifyframe(-1)
-
+            return frame
+        elif task== "unload":
+            self.bit= [0,0,0]
+            self.modifyframe(-1)
     def loadpage(self,frame):
         self.frame= frame
         self.bit[0]=1
@@ -84,7 +88,7 @@ def cargarpagina(lista_paginas,pagina,colaframes,colapaginas):
     if colaframes.size()==0:
         paginavictima=colapaginas.deq()
         lista_paginas[pagina].loadpage(paginavictima.getframe())
-        lista_paginas[paginavictima.getpage()].modifybit("F")
+        lista_paginas[paginavictima.getpage()].modifybit("unload")
         colapaginas.enq(lista_paginas[pagina])
     else:
         frame=colaframes.deq()
