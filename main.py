@@ -9,9 +9,7 @@ def mmu(paginas,frames,archivo):
     
     pagefaults=0
     with open(archivo) as f:
-        contador=0
         for line in f:
-
             operacion= line[0]
             pagina= int(line[1])
             if verificarcarga(lista_paginas,pagina):
@@ -20,8 +18,6 @@ def mmu(paginas,frames,archivo):
                 pagefaults+=1
                 cargarpagina(lista_paginas,pagina,cola,ordenpaginas)
                 lista_paginas[pagina].modifybit(operacion)
-
-    
     generarformato(lista_paginas,paginas,frames,pagefaults,archivo)
             
 mmu(5,5,"ejemplo")
