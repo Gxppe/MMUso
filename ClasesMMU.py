@@ -90,3 +90,16 @@ def cargarpagina(lista_paginas,pagina,colaframes,colapaginas):
         frame=colaframes.deq()
         lista_paginas[pagina].loadpage(frame)
         colapaginas.enq(lista_paginas[pagina])
+
+def generarformato(lista_paginas,paginas,frames,pagefaults,archivo):
+    print("Virtual pages: ",paginas)
+    print("Frames: ",frames)
+    print(f"Reading from file: {archivo}.txt")
+
+    print("Pagina\tV\tU\tD\tFrame")
+    for i in range(len(lista_paginas)):
+        pagina=lista_paginas[i].getpage()
+        frame=lista_paginas[i].getframe()
+        bit=lista_paginas[i].getbit()
+        print(f"{pagina}\t{bit[0]}\t{bit[1]}\t{bit[2]}\t{frame}")
+    print("Total page faults: ",pagefaults)
