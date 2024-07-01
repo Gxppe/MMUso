@@ -26,6 +26,8 @@ class page:
         elif task== "unload":
             self.bit= [0,0,0]
             self.modifyframe(-1)
+    
+    
     def loadpage(self,frame):
         self.frame= frame
         self.bit[0]=1
@@ -66,6 +68,12 @@ class Cola:
     def __str__(self):
         return f"Cola: {self.q}"
 
+
+def freeframe(lista_paginas,frame,colaframes):
+    for i in range(len(lista_paginas)):
+        if lista_paginas[i].getframe()==frame:
+            colaframes.enq(lista_paginas[i].modifybit("F"))
+            break
 
 def initq(rango):
     cola=Cola()

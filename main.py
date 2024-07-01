@@ -12,9 +12,9 @@ def mmu(paginas,frames,archivo):
         for line in f:
             operacion= line[0]
             pagina= int(line[1])
-            if verificarcarga(lista_paginas,pagina):
+            if verificarcarga(lista_paginas,pagina) or operacion=="F":
                 if operacion=="F":
-                    cola.enq(lista_paginas[pagina].modifybit(operacion))
+                    freeframe(lista_paginas,pagina,cola)
                 else:
                     lista_paginas[pagina].modifybit(operacion)
             else:
@@ -22,9 +22,9 @@ def mmu(paginas,frames,archivo):
                 cargarpagina(lista_paginas,pagina,cola,ordenpaginas)
 
                 if operacion=="F":
-                    cola.enq(lista_paginas[pagina].modifybit(operacion))
+                    freeframe(lista_paginas,pagina,cola)
                 else:
                     lista_paginas[pagina].modifybit(operacion)
     generarformato(lista_paginas,paginas,frames,pagefaults,archivo)
-            
-mmu(6,6,"ejemplo")
+
+mmu(6,3,"ejemplo")
