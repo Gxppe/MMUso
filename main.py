@@ -27,4 +27,7 @@ def mmu(paginas,frames,archivo):
                     lista_paginas[pagina].modifybit(operacion)
     generarformato(lista_paginas,paginas,frames,pagefaults,archivo)
 
-mmu(6,3,"ejemplo")
+paginas=int(input())
+frames=int(input())
+archivo=input()
+mmu(paginas,frames,archivo)
